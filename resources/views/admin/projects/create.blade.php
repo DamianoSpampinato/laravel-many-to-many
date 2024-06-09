@@ -31,6 +31,14 @@
                 @endforeach
             </select>
         </div>
+        <div>
+            @foreach ($technologies as $technology)
+            <div>
+                <input @checked(in_array($technology->id, old('technologies', []))) type="checkbox" name="technologies[]" value="{{$technology->id}}" id="technology-{{$technology->id}}">
+                <label for="technology-{{$technology->id}}" >{{$technology->name}}</label>
+            </div>
+            @endforeach
+        </div>
         <button class="btn btn-primary" type="submit">salva</button>
     </form>
 @endsection

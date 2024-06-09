@@ -20,7 +20,7 @@ return new class extends Migration
             ->on('projects')
             ->onDelete('cascade');
 
-            $table->unsignedBigInterger('technology_id');
+            $table->unsignedBigInteger('technology_id');
             $table->foreign('technology_id')
             ->references('id')
             ->on('technologies')

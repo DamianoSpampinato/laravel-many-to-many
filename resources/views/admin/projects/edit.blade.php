@@ -29,6 +29,27 @@
                         <option @selected($type->id == old('type_id', $project->type_id)) value="{{ $type->id }}">{{ $type->name }}</option>
                     @endforeach
                 </select>
+
+                @foreach ($technologies as $technology)
+                <div>
+                    @if ($errors->any())
+                        
+                        <input @checked(in_array($technology->id, old('tags',[]))) type="checkbox" id="technology-{{$technology->id}}" name="technologies[]" value="{{$technology->id}}">
+                    
+                     @else
+                
+                        
+                        <input @checked($project->technologies->contains($technology)) type="checkbox" id="technology-{{$technology->id}}" name="technologies[]" value="{{$technology->id}}">
+                
+                    @endif
+                
+                    <label for="technology-{{$technology->id}}">{{$technology->name}}</label>
+                    
+                </div>
+                @endforeach
+                <div>
+
+                </div>
                 <button class="btn btn-primary" type="submit">salva</button>
             </div>
         </form>
